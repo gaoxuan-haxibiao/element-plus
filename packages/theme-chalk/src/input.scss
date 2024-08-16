@@ -246,6 +246,10 @@
     &[type='number'] {
       line-height: 1;
     }
+
+    &[type='checkbox'] {
+      -webkit-appearance: checkbox;
+    }
   }
 
   @each $slot in (prefix, suffix) {

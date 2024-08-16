@@ -230,10 +230,11 @@ const containerKls = computed(() => [
   rawAttrs.class,
 ])
 
-const wrapperKls = computed(() => [
-  nsInput.e('wrapper'),
-  nsInput.is('focus', isFocused.value),
-])
+const wrapperKls = computed(() =>
+  props.type === 'checkbox'
+    ? ''
+    : [nsInput.e('wrapper'), nsInput.is('focus', isFocused.value)]
+)
 
 const attrs = useAttrs({
   excludeKeys: computed<string[]>(() => {
