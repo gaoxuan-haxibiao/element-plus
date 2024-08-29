@@ -103,7 +103,7 @@ import NodeContent from './tree-node-content.vue'
 import { getNodeKey as getNodeKeyUtil, handleCurrentChange } from './model/util'
 import { useNodeExpandEventBroadcast } from './model/useNodeExpandEventBroadcast'
 import { dragEventsKey } from './model/useDragNode'
-import Node from './model/node'
+import Node, { getPropertyFromData } from './model/node'
 
 import type { ComponentInternalInstance, PropType } from 'vue'
 import type { Nullable } from '@element-plus/utils'
@@ -158,10 +158,9 @@ export default defineComponent({
       childNodeRendered.value = true
     }
 
-    const childrenKey = tree.props.props['children'] || 'children'
     watch(
       () => {
-        const children = props.node.data[childrenKey]
+        const children = getPropertyFromData(props.node, 'children') || []
         return children && [...children]
       },
       () => {

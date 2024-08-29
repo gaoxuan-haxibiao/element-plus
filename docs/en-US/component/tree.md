@@ -156,7 +156,7 @@ tree/draggable
 | Attribute | Description                                                                   | Type                         | Accepted Values | Default |
 | --------- | ----------------------------------------------------------------------------- | ---------------------------- | --------------- | ------- |
 | label     | specify which key of node object is used as the node's label                  | string, function(data, node) | —               | —       |
-| children  | specify which node object is used as the node's subtree                       | string                       | —               | —       |
+| children  | specify which node object is used as the node's subtree                       | string, function(data, node) | —               | —       |
 | disabled  | specify which key of node object represents if node's checkbox is disabled    | string, function(data, node) | —               | —       |
 | isLeaf    | specify whether the node is a leaf node, only works when lazy load is enabled | string, function(data, node) | —               | —       |
 | class     | custom node class name                                                        | string, function(data, node) | —               | —       |

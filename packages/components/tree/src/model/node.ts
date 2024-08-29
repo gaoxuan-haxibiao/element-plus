@@ -57,11 +57,10 @@ const reInitChecked = function (node: Node): void {
   }
 }
 
-const getPropertyFromData = function (node: Node, prop: string): any {
+export const getPropertyFromData = function (node: Node, prop: string): any {
   const props = node.store.props
   const data = node.data || {}
   const config = props[prop]
-
   if (typeof config === 'function') {
     return config(data, node)
   } else if (typeof config === 'string') {
@@ -480,21 +479,11 @@ class Node {
     const data = this.data
     if (!data) return null
 
-    const props = this.store.props
-    let children = 'children'
-    if (props) {
-      children = props.children || 'children'
+    let childrenData = getPropertyFromData(this, 'children')
+    if (forceInit && !childrenData) {
+      childrenData = []
     }
-
-    if (data[children] === undefined) {
-      data[children] = null
-    }
-
-    if (forceInit && !data[children]) {
-      data[children] = []
-    }
-
-    return data[children]
+    return childrenData
   }
 
   updateChildren(): void {
